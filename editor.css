@@ -1,110 +1,367 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>HistoriaApp - Editor Mejorado</title>
-<link rel="stylesheet" href="editor.css" />
-</head>
-<body>
+/* Reset y estilo básico */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0; padding: 0;
+  background: #f9f9f9; /* fondo claro */
+  color: #222;         /* texto oscuro */
+}
 
-<header>
-  <h1>HistoriaApp</h1>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="editor.html">Editor</a>
-    <a href="lecturas.html">Lecturas</a>
-    <a href="acerca.html">Acerca</a>
-  </nav>
-</header>
+header {
+  background: #333;    /* header oscuro */
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-<main>
-  <section class="editor-container">
+header h1 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
 
-    <div class="editor-controls">
-      <button id="btn-bold" type="button"><strong>B</strong></button>
-      <button id="btn-italic" type="button"><em>I</em></button>
-      <button id="btn-underline" type="button"><u>U</u></button>
-      <select id="font-select">
-        <option value="sans-serif">Sans-serif</option>
-        <option value="serif">Serif</option>
-        <option value="monospace">Monospace</option>
-        <option value="cursive">Cursive</option>
-      </select>
+nav a {
+  color: white;
+  margin-left: 1.2rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
 
-      <!-- Botón icono para abrir modal insertar imagen -->
-      <button id="btn-open-image-modal" title="Insertar imagen" aria-label="Insertar imagen" type="button" class="icon-button">
-        📷
-      </button>
+nav a:hover {
+  text-decoration: underline;
+}
 
-      <!-- Botón para remover imagen seleccionada (oculto por defecto) -->
-      <button id="btn-remove-image" title="Remover imagen seleccionada" aria-label="Remover imagen" type="button" style="display:none;">
-        ❌
-      </button>
-        <!-- Botón Personalizar -->
-        <button id="customize-btn" class="customize-btn" title="Personalizar historia">Personalizar</button>
-    </div>
+main {
+  padding: 1rem 2rem;
+  height: calc(100vh - 70px);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
 
-    <div class="editor-wrapper">
-      <div class="line-numbers" id="line-numbers">
-        <!-- Números de línea van aquí -->
-      </div>
-      <div id="story-input" contenteditable="true" spellcheck="false" aria-label="Editor de historia"></div>
-    </div>
+.editor-container {
+  max-width: 960px;
+  width: 100%;
+}
 
-  </section>
-</main>
+.editor-controls {
+  margin-bottom: 1rem;
+  background: #444;       /* tono gris oscuro para barra de controles */
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
 
-<footer>
-  <p>&copy; 2025 HistoriaApp</p>
-</footer>   
+.editor-controls button {
+  cursor: pointer;
+  border: none;
+  background: #eee;
+  padding: 6px 12px;
+  font-weight: 700;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
 
-<!-- Modal de imagen -->
-<div class="modal modal-hidden" id="image-modal">
-  <h3>Insertar Imagen</h3>
-  <input type="file" id="modal-image-file" accept="image/*" />
-  <label for="modal-image-line">Línea para insertar:</label>
-  <input type="number" id="modal-image-line" min="1" placeholder="Número de línea" />
+.editor-controls button:hover {
+  background: #ddd;
+}
 
-  <div id="image-edit-controls" class="image-edit-controls" style="display:none;">
-    <label>Tamaño ancho (%):
-      <input type="range" id="img-width" min="10" max="100" value="100" />
-      <label for="img-height">Alto (%)</label>
-      <input type="range" id="img-height" min="10" max="100" step="1">
-    </label>
-    <div>
-      <button data-align="left">Izquierda</button>
-      <button data-align="center">Centro</button>
-      <button data-align="right">Derecha</button>
-    </div>
-  </div>
+.editor-controls select {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: white;
+  color: #333;
+}
 
-  <div class="modal-buttons">
-    <button id="modal-insert-btn">Insertar</button>
-    <button id="modal-cancel-btn">Cancelar</button>
-  </div>
-</div>
+.editor-wrapper {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 400px;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
 
-<!-- Panel de personalización -->
-<div class="customize-panel hidden" id="customize-panel">
-  <div class="customize-content">
-    <span id="close-customize" title="Cerrar">&times;</span>
-    <h2>Personalizar historia</h2>
-    
-    <label for="custom-title">Título *</label>
-    <input type="text" id="custom-title" placeholder="Ingresa el título" required />
-    
-    <label for="custom-description">Descripción</label>
-    <textarea id="custom-description" placeholder="Breve descripción"></textarea>
-    
-    <label for="custom-image">Imagen de portada</label>
-    <input type="file" id="custom-image" accept="image/*" />
-    
-    <button id="publish-btn" class="publish-btn">Publicar</button>
-  </div>
-</div>
+.line-numbers {
+  user-select: none;
+  background: #f0f0f0; /* gris muy claro */
+  color: #666;         /* gris medio */
+  font-family: monospace;
+  font-size: 14px;
+  padding: 10px 8px;
+  text-align: right;
+  line-height: 1.4em;
+  min-width: 40px;
+  overflow: hidden;
+}
 
-<script src="editor.js"></script>
+#story-input {
+  flex: 1;
+  padding: 10px 15px;
+  font-size: 16px;
+  line-height: 1.4em;
+  font-family: Arial, sans-serif;
+  outline: none;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  border-left: 1px solid #ccc;
+  overflow-wrap: break-word;
+  min-height: 400px;
+  border-radius: 0 8px 8px 0;
+  background: white;
+  cursor: text;
+}
 
-</body>
-</html>
+/* Imagen insertada */
+.inserted-image {
+  max-width: 100%;
+  margin: 0.3rem 0;
+  border-radius: 6px;
+  cursor: pointer;
+  display: block;
+}
+
+/* Panel para insertar imagen */
+.image-insert {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 400px;
+  background: #fff;
+}
+
+.image-insert h3 {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  color: #333;
+}
+
+.image-insert label,
+.image-insert input,
+.image-insert button {
+  display: block;
+  margin-bottom: 0.7rem;
+  font-size: 14px;
+  color: #333;
+}
+
+.image-insert input[type="number"],
+.image-insert input[type="file"] {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.image-insert button {
+  background: #eee;
+  border: 1px solid #888;
+  color: #333;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.image-insert button:hover {
+  background: #ddd;
+}
+
+/* Controles de imagen seleccionada */
+.image-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+}
+
+.image-controls label {
+  font-size: 14px;
+  color: #222;
+}
+
+.image-controls input[type=range] {
+  vertical-align: middle;
+}
+
+.image-controls button {
+  padding: 5px 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #666;
+  background: white;
+  color: #333;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.image-controls button:hover {
+  background: #666;
+  color: white;
+}
+
+/* Botón icono en barra */
+.icon-button {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+.icon-button:hover {
+  transform: scale(1.2);
+}
+
+/* Panel de control de imagen: flota en la esquina inferior derecha */
+#image-modal {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  border-radius: 8px;
+  padding: 10px 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1000;
+  width: 300px;
+}
+
+#image-modal.modal-hidden {
+  display: none;
+}
+
+#image-modal h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+#image-modal label {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+#image-modal input[type="range"],
+#image-modal input[type="number"],
+#image-modal input[type="file"] {
+  width: 100%;
+}
+
+#image-modal button {
+  padding: 6px 10px;
+  border: 1px solid #666;
+  background: white;
+  color: #333;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#image-modal button:hover {
+  background: #666;
+  color: white;
+}
+
+#image-modal .modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+#image-modal .modal-buttons button:last-child {
+  border-color: #bbb;
+  color: #333;
+}
+
+#image-modal .modal-buttons button:last-child:hover {
+  background: #999;
+  color: white;
+}
+/* Panel Personalizar */
+.customize-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+  padding: 20px;
+  z-index: 1000;
+  overflow-y: auto;
+  display: none; /* Oculto por defecto */
+}
+
+.customize-panel h2 {
+  margin-top: 0;
+}
+
+.customize-panel label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.customize-panel input[type="text"],
+.customize-panel textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.customize-panel input[type="file"] {
+  margin-bottom: 15px;
+}
+
+.publish-btn {
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.publish-btn:hover {
+  background: #45a049;
+}
+
+#close-customize {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #555;
+}
+
+#close-customize:hover {
+  color: #000;
+}
