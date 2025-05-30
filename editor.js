@@ -252,3 +252,36 @@ btnUnderline.addEventListener('click', () => applyFormat('underline'));
 fontSelect.addEventListener('change', e => applyFont(e.target.value));
 
 updateLineNumbers();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const customizeBtn = document.getElementById('customize-btn');
+  const customizePanel = document.getElementById('customize-panel');
+  const closeCustomize = document.getElementById('close-customize');
+  const publishBtn = document.getElementById('publish-btn');
+  const customTitle = document.getElementById('custom-title');
+
+  // Mostrar el panel
+  customizeBtn.addEventListener('click', () => {
+    customizePanel.style.display = 'block';
+  });
+
+  // Cerrar el panel
+  closeCustomize.addEventListener('click', () => {
+    customizePanel.style.display = 'none';
+  });
+
+  // Publicar (validar título obligatorio)
+  publishBtn.addEventListener('click', () => {
+    if (customTitle.value.trim() === '') {
+      alert('El título es obligatorio.');
+      customTitle.focus();
+      return;
+    }
+
+    // Aquí podrías enviar los datos a tu backend o hacer lo que necesites.
+    alert('¡Historia publicada correctamente!');
+    // Cierra el panel tras publicar
+    customizePanel.style.display = 'none';
+  });
+});
+
