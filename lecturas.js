@@ -14,11 +14,11 @@ const phrases = [
 
 // Historias de ejemplo
 const stories = [
-  { title: "El viaje del héroe", content: "", likes: 0, visits: 0 },
-  { title: "La noche estrellada", content: "", likes: 0, visits: 0 },
-  { title: "El despertar", content: "", likes: 0, visits: 0 },
-  { title: "Caminos cruzados", content: "", likes: 0, visits: 0 },
-  { title: "La última carta", content: "", likes: 0, visits: 0 }
+  { title: "Proximamente", content: "", likes: 0, visits: 0 },
+  { title: "Proximamente", content: "", likes: 0, visits: 0 },
+  { title: "Proximamente", content: "", likes: 0, visits: 0 },
+  { title: "Proximamente", content: "", likes: 0, visits: 0 },
+  { title: "Proximamente", content: "", likes: 0, visits: 0 }
 ];
 
 // Elementos DOM
@@ -59,10 +59,17 @@ function createCard(story) {
         </svg>
         <span class="visit-count">${story.visits}</span>
       </div>
+      <div class="comment-container">
+        <svg class="comment-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4-4 7-9 7-1.22 0-2.38-.17-3.43-.48l-4.31 1.28a.75.75 0 01-.95-.95l1.28-4.31C4.17 14.38 4 13.22 4 12c0-5 4-9 9-9s9 4 9 9z" />
+        </svg>
+        <span class="comment-count">${story.comments || 0}</span>
+      </div>
     </div>
   `;
   return card;
 }
+
 
 
 // Mostrar historias
@@ -82,6 +89,59 @@ function showStories(filteredStories) {
 
 showStories(stories);
 
+// Referencias al panel
+const previewPanel = document.getElementById('story-preview');
+const previewTitle = document.getElementById('preview-title');
+const previewImage = document.getElementById('preview-image');
+const previewDescription = document.getElementById('preview-description');
+const closePreview = document.getElementById('close-preview');
+const readBtn = document.getElementById('preview-read-btn');
+
+// Agregar datos de portada a las historias (¡ejemplo!)
+stories.forEach(story => {
+  story.coverImage = 'img/default.jpg'; // Puedes cambiar la ruta a la imagen real
+  story.description = 'Descripción de ejemplo para ' + story.title;
+  story.link = 'lectura.html'; // Enlace al leer la historia
+});
+
+// Abrir panel de vista previa al hacer clic en la tarjeta
+function openPreview(story) {
+  previewTitle.textContent = story.title;
+  previewImage.src = story.coverImage || 'img/default.jpg';
+  previewDescription.textContent = story.description || 'Pronto habrá contenido...';
+  readBtn.onclick = () => window.location.href = story.link;
+
+  previewPanel.classList.add('show');
+}
+
+// Cerrar panel
+closePreview.addEventListener('click', () => {
+  previewPanel.classList.remove('show');
+});
+
+// Modifica showStories() para que las tarjetas se puedan clickear
+function showStories(filteredStories) {
+  cardsContainer.innerHTML = '';
+
+  if (filteredStories.length === 0) {
+    cardsContainer.innerHTML = '<p>No se encontraron historias.</p>';
+    return;
+  }
+
+  filteredStories.forEach(story => {
+    const card = createCard(story);
+
+    // Agrega evento para abrir panel
+    card.addEventListener('click', () => openPreview(story));
+
+    cardsContainer.appendChild(card);
+  });
+}
+
+// Inicializa con historias de ejemplo
+showStories(stories);
+
+
 // Filtrar historias
 searchInput.addEventListener('input', () => {
   const query = searchInput.value.toLowerCase();
@@ -90,3 +150,4 @@ searchInput.addEventListener('input', () => {
   );
   showStories(filtered);
 });
+
