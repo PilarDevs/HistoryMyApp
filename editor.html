@@ -41,6 +41,8 @@
       <button id="btn-remove-image" title="Remover imagen seleccionada" aria-label="Remover imagen" type="button" style="display:none;">
         ❌
       </button>
+        <!-- Botón Personalizar -->
+        <button id="customize-btn" class="customize-btn" title="Personalizar historia">Personalizar</button>
     </div>
 
     <div class="editor-wrapper">
@@ -49,8 +51,6 @@
       </div>
       <div id="story-input" contenteditable="true" spellcheck="false" aria-label="Editor de historia"></div>
     </div>
-
-    <!-- Eliminé la sección de inserción fija -->
 
   </section>
 </main>
@@ -66,13 +66,11 @@
   <label for="modal-image-line">Línea para insertar:</label>
   <input type="number" id="modal-image-line" min="1" placeholder="Número de línea" />
 
-  <!-- Estos son los controles de imagen, solo aparecen si seleccionas una imagen -->
   <div id="image-edit-controls" class="image-edit-controls" style="display:none;">
     <label>Tamaño ancho (%):
       <input type="range" id="img-width" min="10" max="100" value="100" />
       <label for="img-height">Alto (%)</label>
-    <input type="range" id="img-height" min="10" max="100" step="1">
-
+      <input type="range" id="img-height" min="10" max="100" step="1">
     </label>
     <div>
       <button data-align="left">Izquierda</button>
@@ -87,6 +85,24 @@
   </div>
 </div>
 
+<!-- Panel de personalización -->
+<div class="customize-panel hidden" id="customize-panel">
+  <div class="customize-content">
+    <span id="close-customize" title="Cerrar">&times;</span>
+    <h2>Personalizar historia</h2>
+    
+    <label for="custom-title">Título *</label>
+    <input type="text" id="custom-title" placeholder="Ingresa el título" required />
+    
+    <label for="custom-description">Descripción</label>
+    <textarea id="custom-description" placeholder="Breve descripción"></textarea>
+    
+    <label for="custom-image">Imagen de portada</label>
+    <input type="file" id="custom-image" accept="image/*" />
+    
+    <button id="publish-btn" class="publish-btn">Publicar</button>
+  </div>
+</div>
 
 <script src="editor.js"></script>
 
