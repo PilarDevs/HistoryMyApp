@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Configuración de Usuario</title>
+  <link rel="stylesheet" href="css/user-settings.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="settings-container">
+      <header class="settings-header">
+  <button id="back-btn" title="Volver">
+    ⬅️ Volver
+  </button>
+  <h1>Configuración de Usuario</h1>
+</header>
+
+    <div class="profile-section">
+      <div class="profile-picture">
+        <img src="img/user.png" alt="Foto de perfil" id="profile-pic">
+        <button id="change-pic-btn">Cambiar Foto</button>
+        <input type="file" id="profile-pic-input" accept="image/*" hidden>
+      </div>
+
+      <div class="profile-info">
+        <label for="username">Nombre de Usuario</label>
+        <input type="text" id="username" value="Usuario123" readonly>
+
+        <label for="description">Descripción</label>
+        <textarea id="description" rows="4" readonly>¡Hola! Esta es mi descripción.</textarea>
+      </div>
+    </div>
+
+    <div class="settings-actions">
+      <button id="edit-btn">Editar</button>
+      <button id="save-btn" disabled>Guardar</button>
+      <button id="cancel-btn" disabled>Cancelar</button>
+      <button id="change-password-btn">Cambiar Contraseña</button>
+    </div>
+
+    <div class="password-panel hidden">
+      <h2>Cambiar Contraseña</h2>
+      <label for="new-password">Nueva Contraseña</label>
+      <input type="password" id="new-password">
+      <label for="confirm-password">Confirmar Contraseña</label>
+      <input type="password" id="confirm-password">
+      <div class="password-panel-actions">
+        <button id="save-password-btn">Guardar Contraseña</button>
+        <button id="cancel-password-btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/user-settings.js"></script>
+</body>
+</html>

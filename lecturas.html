@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lecturas</title>
+<link rel="stylesheet" href="css/lecturas.css" />
+</head>
+<body>
+
+<header>
+  <h1>Lecturas</h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="editor.html">Editor</a>
+    <a href="lecturas.html">Lecturas</a>
+    <a href="acerca.html">Acerca</a>
+  </nav>
+</header>
+
+<main>
+  <section id="phrase-section">
+    <h2>Frase del día</h2>
+    <p id="phrase-of-day"></p>
+  </section>
+
+  <section>
+    <h2>Historias destacadas</h2>
+    <input type="text" id="search-input" placeholder="Buscar historias...">
+    <div id="cards-container"></div>
+  </section>
+</main>
+
+<!-- 🟡 Panel de vista previa oculto -->
+<div class="story-preview-panel hidden" id="story-preview">
+  <div class="preview-content">
+    <span id="close-preview" title="Cerrar">&times;</span>
+    <h2 id="preview-title"></h2>
+    <img id="preview-image" alt="Imagen de portada" />
+    <p id="preview-description"></p>
+    <button id="preview-read-btn">Leer historia</button>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 HistoriaApp</p>
+</footer>
+
+<script src="js/lecturas.js"></script>
+</body>
+</html>
