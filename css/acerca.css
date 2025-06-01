@@ -1,0 +1,122 @@
+/* Body y tipografía */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #e0f7fa; /* celeste suave */
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: #00796b; /* verde oscuro */
+  color: #fff;
+  text-align: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+header nav {
+  margin-top: 0.5rem;
+}
+
+header nav a {
+  color: #fff;
+  margin: 0 0.7rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+  color: #a7ffeb;
+}
+
+/* Main container */
+main {
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Secciones en tarjetas */
+main section {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 1.8rem 2rem;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+  text-align: center;
+}
+
+main section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+/* Iconos representativos con Font Awesome */
+section h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #00796b;
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+/* Usa un span para iconos dentro del h2 */
+section h2 .icon {
+  font-size: 2rem;
+  color: #004d40;
+}
+
+/* Párrafos */
+main section p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  main section {
+    width: 90%;
+  }
+}

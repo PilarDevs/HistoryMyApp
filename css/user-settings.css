@@ -1,0 +1,262 @@
+/* Estilo base */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #eaeaea;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.settings-container {
+  background: #fff;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.settings-container h1 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #111;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.5rem;
+}
+
+/* Sección de perfil */
+.profile-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.profile-picture {
+  flex: 1 1 150px;
+  text-align: center;
+}
+
+.profile-picture img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #999;
+}
+
+.profile-picture button {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.profile-picture button:hover {
+  background: #111;
+}
+
+/* Información */
+.profile-info {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info label {
+  font-weight: 600;
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+.profile-info input,
+.profile-info textarea {
+  width: 100%;
+  margin-top: 0.3rem;
+  padding: 0.7rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  background: #f9f9f9;
+  resize: none;
+  font-size: 1rem;
+  color: #111;
+}
+
+.profile-info input[readonly],
+.profile-info textarea[readonly] {
+  background: #eaeaea;
+  color: #555;
+}
+
+/* Botones */
+.settings-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.settings-actions button {
+  flex: 1 1 100px;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+#edit-btn {
+  background: #333;
+  color: #fff;
+}
+
+#edit-btn:hover {
+  background: #000;
+}
+
+#save-btn {
+  background: #222;
+  color: #fff;
+}
+
+#save-btn:hover {
+  background: #111;
+}
+
+#cancel-btn {
+  background: #777;
+  color: #fff;
+}
+
+#cancel-btn:hover {
+  background: #555;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Panel de cambio de contraseña */
+.password-panel {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.password-panel h2 {
+  margin-top: 0;
+}
+
+.password-panel label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  font-weight: 600;
+}
+
+.password-panel input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 0.8rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.password-panel-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.password-panel-actions button {
+  flex: 1;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: #333;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.password-panel-actions button:hover {
+  background: #555;
+}
+
+.password-panel.hidden {
+  display: none;
+}
+
+/* Header de configuración */
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 1rem;
+  background: #333;
+  color: white;
+  gap: 1rem;
+}
+
+.settings-header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: white;
+}
+
+#back-btn {
+  background: #555;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#back-btn:hover {
+  background: #777;
+}
+
+@media (max-width: 600px) {
+  .settings-header h1 {
+    font-size: 1.2rem;
+  }
+  #back-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Responsive */
+@media (max-width: 600px) {
+  .profile-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-info {
+    width: 100%;
+  }
+
+  .settings-actions {
+    flex-direction: column;
+  }
+}
