@@ -1,0 +1,148 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav a{
+    color: white;
+    text-decoration-line: none;
+    margin: 0.5rem;
+}
+
+nav a:hover   {
+    transition: 1s;
+    color: #f0ad4e;
+    text-decoration: underline;
+
+}
+
+/* Encabezado */
+header {
+  background-color: #444;
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+}
+
+header h1 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* Contenido principal */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+/* Botones */
+.option-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.option-buttons button {
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.option-buttons button:hover {
+  background-color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Modal */
+.story-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.story-modal {
+  background-color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 18px;
+  max-width: 900px;
+  width: 95%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Título "Tus historias" oculto inicialmente */
+.story-modal h2 {
+  color: #444;
+  margin-bottom: 1.5rem;
+  display: none;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+/* Tarjetas */
+.story-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.story-card {
+  background-color: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  width: 220px;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.story-card:hover {
+  border-color: #c084fc;
+  transform: scale(1.03);
+}
+
+.story-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.story-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Pie de página */
+footer {
+  background-color: #444;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid #ddd;
+}

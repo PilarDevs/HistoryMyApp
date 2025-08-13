@@ -173,3 +173,77 @@ footer {
   margin-top: 3rem;
   font-size: 0.9rem;
 }
+
+/* ========== Responsive Ajustes Generales ========== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header h1 {
+    margin-bottom: 0.5rem;
+    text-align: left;
+    width: 100%;
+  }
+
+  header nav {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  header nav a {
+    display: inline-block;
+    margin: 0.3rem 0.6rem 0.3rem 0;
+  }
+
+  .search-container {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-container input {
+    width: 100%;
+  }
+
+  .profile-container {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-container {
+    grid-template-columns: 1fr; /* una sola columna para pantallas pequeñas */
+  }
+
+  .story-card {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .story-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .story-card p {
+    font-size: 0.95rem;
+  }
+
+  .views-container {
+    font-size: 0.85rem;
+    right: 0.6rem;
+    bottom: 0.6rem;
+  }
+
+  .eye-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  footer {
+    font-size: 0.85rem;
+  }
+}

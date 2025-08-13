@@ -14,7 +14,21 @@ const phrases = [
 
 // Historias de ejemplo
 const stories = [
-  { title: "Proximamente", content: "", likes: 0, visits: 0 },
+  {
+    title: "La Ciudad del Olvido",
+    content: "Una ciudad donde nadie recuerda el ayer...",
+    likes: 983500,
+    visits: 1800000,
+    comments: 192999,
+    coverImage: "img/ciudadDelOlvido.png",
+    description: "Explora una ciudad misteriosa donde los recuerdos desaparecen cada noche.",
+    link: "ver-historia.html?id=1",  // Cambio aquí
+    chapters: [
+      { title: "Capítulo 1: El Despertar", content: "Contenido del capítulo 1...", image: "img/cap1.jpg" },
+      { title: "Capítulo 2: Las Sombras", content: "Contenido del capítulo 2...", image: "img/cap2.jpg" },
+      { title: "Capítulo 3: El Eco del Pasado", content: "Contenido del capítulo 3...", image: "img/cap3.jpg" },
+    ]
+  },
   { title: "Proximamente", content: "", likes: 0, visits: 0 },
   { title: "Proximamente", content: "", likes: 0, visits: 0 },
   { title: "Proximamente", content: "", likes: 0, visits: 0 },
@@ -34,6 +48,24 @@ function showRandomPhrase() {
 showRandomPhrase();
 setInterval(showRandomPhrase, 120000); // Cada 2 minutos
 
+// Función para convertir número a formato compacto (1k, 1M, 1B)
+function formatNumber(num) {
+  if (num < 1000) return num.toString();
+
+  const units = ['k', 'M', 'B', 'T']; // miles, millones, billones, trillones
+  let unitIndex = -1;
+  let scaled = num;
+
+  while (scaled >= 1000 && unitIndex < units.length - 1) {
+    scaled /= 1000;
+    unitIndex++;
+  }
+
+  // Mostrar un decimal si es necesario
+  return scaled.toFixed(scaled < 10 && scaled % 1 !== 0 ? 1 : 0) + units[unitIndex];
+}
+
+
 function createCard(story) {
   const card = document.createElement('div');
   card.className = 'card';
@@ -42,31 +74,31 @@ function createCard(story) {
   const title = hasContent ? story.title : 'Próximamente...';
   const content = hasContent ? story.content : 'Pronto habrá contenido...';
 
-  card.innerHTML = `
-    <h3>${title}</h3>
-    <p>${content}</p>
-    <div class="card-stats">
-      <div class="like-container">
-        <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 010 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
-        <span class="like-count">${story.likes}</span>
-      </div>
-      <div class="visit-container">
-        <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-        </svg>
-        <span class="visit-count">${story.visits}</span>
-      </div>
-      <div class="comment-container">
-        <svg class="comment-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4-4 7-9 7-1.22 0-2.38-.17-3.43-.48l-4.31 1.28a.75.75 0 01-.95-.95l1.28-4.31C4.17 14.38 4 13.22 4 12c0-5 4-9 9-9s9 4 9 9z" />
-        </svg>
-        <span class="comment-count">${story.comments || 0}</span>
-      </div>
+card.innerHTML = `
+  <h3>${title}</h3>
+  <p>${content}</p>
+  <div class="card-stats">
+    <div class="like-container">
+      <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 010 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+      </svg>
+      <span class="like-count">${formatNumber(story.likes)}</span>
     </div>
-  `;
+    <div class="visit-container">
+      <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+      </svg>
+      <span class="visit-count">${formatNumber(story.visits)}</span>
+    </div>
+    <div class="comment-container">
+      <svg class="comment-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4-4 7-9 7-1.22 0-2.38-.17-3.43-.48l-4.31 1.28a.75.75 0 01-.95-.95l1.28-4.31C4.17 14.38 4 13.22 4 12c0-5 4-9 9-9s9 4 9 9z" />
+      </svg>
+      <span class="comment-count">${formatNumber(story.comments || 0)}</span>
+    </div>
+  </div>
+`;
   return card;
 }
 
@@ -99,9 +131,9 @@ const readBtn = document.getElementById('preview-read-btn');
 
 // Agregar datos de portada a las historias (¡ejemplo!)
 stories.forEach(story => {
-  story.coverImage = 'img/default.jpg'; // Puedes cambiar la ruta a la imagen real
+  story.coverImage = ''; // Puedes cambiar la ruta a la imagen real
   story.description = 'Descripción de ejemplo para ' + story.title;
-  story.link = 'lectura.html'; // Enlace al leer la historia
+  //story.link = 'lectura.html'; // Enlace al leer la historia
 });
 
 // Abrir panel de vista previa al hacer clic en la tarjeta

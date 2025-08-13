@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ver Historia</title>
+  <link rel="stylesheet" href="css/ver-historia.css" />
+
+  <link rel="icon" href="img/9 jun 2025, 01_21_39 a.m..png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+
+<div class="story-card">
+  <div id="story-title" class="story-title"></div>
+  <div class="chapter-label" id="chapter-label"></div>
+  <img id="chapter-image" class="chapter-image" />
+  <div id="chapter-content" class="chapter-content"></div>
+
+  <div class="chapter-navigation">
+    <button id="btn-back">Anterior</button>
+
+    <!-- Íconos en el centro -->
+<div class="chapter-actions">
+  <button id="like-btn" class="icon-button" title="Me gusta">
+    <i class="fa-regular fa-heart"></i>
+  </button>
+  <button id="comment-btn" class="icon-button" title="Comentarios">
+    <i class="fa-regular fa-comment-dots"></i>
+  </button>
+</div>
+
+    <button id="btn-next">Siguiente</button>
+  </div>
+</div>
+
+<!-- Panel lateral -->
+<div id="side-panel" class="side-panel hidden">
+  <div class="card menu-card">
+    <h3>Capítulos</h3>
+    <ul id="chapter-list"></ul>
+    <button id="back-btn">Volver a Lecturas</button>
+  </div>
+</div>
+
+<!-- Botón tipo "hamburguesa" -->
+<div class="menu-toggle" id="menu-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Panel de comentarios -->
+<div id="comment-panel" class="comment-panel hidden">
+  <div class="comment-header">
+    <h3>Comentarios</h3>
+    <button id="close-comments"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="comment-body" id="comment-list">
+    <div class="comment"><strong>Ana:</strong> Esta historia me atrapó desde el primer párrafo.</div>
+    <div class="comment"><strong>Mario:</strong> El final fue muy realista. Me dejó pensando.</div>
+    <div class="comment"><strong>Luna23:</strong> Qué duro... pero hermoso.</div>
+  </div>
+  <div class="comment-input">
+    <textarea id="user-comment" placeholder="Escribe tu comentario..."></textarea>
+    <button id="send-comment">Enviar</button>
+  </div>
+</div>
+
+<script src="js/ver-historia.js"></script>
+</body>
+</html>

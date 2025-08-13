@@ -365,3 +365,45 @@ main {
 #close-customize:hover {
   color: #000;
 }
+
+.mobile-warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f8f8f8;
+  color: #444;
+  font-family: sans-serif;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.mobile-warning-content {
+  max-width: 400px;
+  padding: 2rem;
+}
+
+.mobile-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+
+@media (max-width: 768px) {
+  .editor-container {
+    display: none !important;
+  }
+
+  .mobile-warning {
+    display: block !important;
+    padding: 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #444;
+  }
+}
+

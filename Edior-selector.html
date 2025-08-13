@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FanNovel - Selector de Editor</title>
+  <link rel="stylesheet" href="css/editor-selector.css" />
+  <link rel="icon" href="img/9 jun 2025, 01_21_39 a.m..png" type="image/png">
+</head>
+<body>
+
+  <header>
+    <h1>FanNovel</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="lecturas.html">Lecturas</a>
+      <a href="acerca.html">Acerca</a>
+    </nav>
+  </header>
+
+  <main class="selector-container">
+    <h2>¿Qué deseas hacer?</h2>
+    <div class="option-buttons">
+      <button id="new-story-btn">✍️ Escribir nueva historia</button>
+      <button id="edit-story-btn">🗂️ Editar historia existente</button>
+    </div>
+
+    <div id="existing-stories-panel" class="hidden">
+      <h3>Tus historias - Desarrollo</h3>
+      <div class="stories-grid" id="stories-grid">
+        <!-- Tarjetas simuladas -->
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 FanNovel</p>
+  </footer>
+
+  <script src="js/editor-selector.js"></script>
+</body>
+</html>

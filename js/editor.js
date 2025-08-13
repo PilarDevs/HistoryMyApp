@@ -18,6 +18,21 @@ const modalCancelBtn = document.getElementById('modal-cancel-btn');
 
 let selectedImage = null;
 
+// Desactivar el editor en móviles o pantallas pequeñas
+function disableEditorOnSmallScreens() {
+  if (window.innerWidth < 268) {
+    const editorContainer = document.querySelector('.editor-container');
+    const mobileWarning = document.querySelector('.mobile-warning');
+
+    if (editorContainer) editorContainer.style.display = 'none';
+    if (mobileWarning) mobileWarning.style.display = 'block';
+  }
+}
+
+window.addEventListener('load', disableEditorOnSmallScreens);
+window.addEventListener('resize', disableEditorOnSmallScreens);
+
+
 // Actualiza la numeración de líneas
 function countLines() {
   let linesCount = 0;

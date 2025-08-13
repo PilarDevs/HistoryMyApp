@@ -9,7 +9,7 @@ body {
 
 /* Header */
 header {
-  background: #00796b; /* verde oscuro */
+  background: #444; /* verde oscuro */
   color: #fff;
   text-align: center;
   padding: 1rem 2rem;
@@ -48,6 +48,7 @@ main {
   padding: 2rem 1rem;
   max-width: 900px;
   margin: auto;
+  margin-top: 4rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
@@ -101,11 +102,11 @@ main section p {
 
 /* Footer */
 footer {
-  background: #222;
+  background: #444;
   color: #ccc;
   text-align: center;
   padding: 1rem;
-  margin-top: 3rem;
+  margin-top: 4.9rem;
   font-size: 0.9rem;
 }
 
